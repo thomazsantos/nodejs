@@ -4,7 +4,8 @@
   "description": "example nodejs API",
   "main": "index.js",
   "scripts": {
-    "test": "nodemon --exec mocha -R min"
+    "test": "nodemon --exec mocha -R min",
+    "dev" : "nodemon index.js"
   },
   "author": "",
   "license": "ISC",
