@@ -63,8 +63,8 @@ describe('login authentication', () => {
         .then(function (res) {
         expect(res).to.have.cookie('sessionid');
         return agent.get('/')
-        .then(function (res) {
-           expect(res).to.have.status(200);
+            .then(function (res) {
+            expect(res).to.have.status(200);
         });
                 
     }); 
@@ -76,6 +76,26 @@ describe('remove a user exists', ()=>{
     it('remove a user in API!',(done)=>{
         agent 
         .post('/api/removeuser')
+        .send(userJson)
+        .end((error,res) =>{   
+            if (error) {
+                done(error);
+              } else {         
+                res.should.have.status(200);
+                done();
+              }
+        })    
+    })
+     
+})
+
+// update a user
+describe('remove a user exists', ()=>{
+    it('remove a user in API!',(done)=>{
+        userJson.firstname = "update user";
+        userJson.lastname = "update user"        
+        agent 
+        .post('/api/updateuser')
         .send(userJson)
         .end((error,res) =>{   
             if (error) {

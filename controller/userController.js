@@ -94,8 +94,28 @@ function removeuser(req,res){
     
 }
 
+function updateuser(req,res){
+    
+    console.log(req.user);
+
+    user.findOne({'_id': req.user._id},function(err,user){
+        if (err){
+            console.log(err);
+        }else{
+            user.firstname = req.body.firstname;
+            user.lastname = req.body.lastname
+            user.email = req.body.email
+            user.password = req.body.password
+            user.password2 = req.body.password2
+            user.save();
+            res.status(200).json(user)
+        }
+    }); 
+    
+}
+
 function indexof(req,res){
     res.status(200).send(`it's run ;D ready for fun!`);
 }
 
-module.exports = {register, login, logout, profile, listusers, removeuser, indexof}
+module.exports = {register, login, logout, profile, listusers, removeuser, updateuser, indexof}
