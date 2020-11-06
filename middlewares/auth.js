@@ -4,15 +4,17 @@ let auth =(req,res,next)=>{
     let token =req.cookies.auth;
     User.findByToken(token,(err,user)=>{
         if(err){ 
+            console.log(err);
             throw err;
         }
         if(!user){
+            console.log(err); 
             return res.json({
                 error :true
             });
         }
-        req.token= token;
-        req.user=user;
+        req.token = token;
+        req.user = user;
         next();
 
     })
