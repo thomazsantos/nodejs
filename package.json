@@ -2,12 +2,21 @@
   "name": "myapp",
   "version": "1.0.0",
   "description": "example nodejs API",
+  "type": "module",
   "main": "index.js",
-  "scripts": {
-    "test": "nodemon --exec mocha ",
-    "dev" : "nodemon index.js"
+  "eslintConfig": {
+    "env": {
+      "browser": false,
+      "node": true,
+      "mocha": true
+    }
   },
-  "author": "",
+  "scripts": {
+    "eslint": "eslint ",
+    "test": "nodemon --exec mocha ",
+    "dev": "nodemon index.js"
+  },
+  "author": "thomaz luiz santos",
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^5.0.0",
@@ -15,6 +24,8 @@
     "chai": "^4.2.0",
     "chai-http": "^4.3.0",
     "cookie-parser": "^1.4.5",
+    "eslint-plugin-chai-expect": "^2.2.0",
+    "eslint-plugin-mocha": "^8.0.0",
     "express": "^4.17.1",
     "jsonwebtoken": "^8.5.1",
     "mocha": "^8.2.1",
@@ -22,7 +33,15 @@
     "nodemon": "^2.0.4",
     "passport": "^0.4.1",
     "passport-jwt": "^4.0.0",
+    "sucrase": "^3.16.0",
     "superagent": "^6.1.0",
     "supertest": "^6.0.1"
+  },
+  "devDependencies": {
+    "eslint": "^7.12.1",
+    "eslint-config-standard": "^16.0.1",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.2.1"
   }
 }

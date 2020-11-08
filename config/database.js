@@ -1,16 +1,14 @@
-const db=require('./config').get(process.env.NODE_ENV);
-const mongoose = require('mongoose');
+import mongoose from 'mongoose'
 
-module.exports = function(){
-    mongoose.set('useNewUrlParser', true);
-    mongoose.set('useFindAndModify', false);
-    mongoose.set('useCreateIndex', true);
-    mongoose.connect(db.DATABASE, { useNewUrlParser: true,useUnifiedTopology:true }).then( 
-        ()=> {console.log("Database connected!") },
-        err => {console.log("*** Error to connect on database *** " + err)}
-    );
-} 
-
-
-
-
+export default function () {
+  const options = {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useCreateIndex: true,
+    useFindAndModify: false
+  }
+  mongoose.connect('mongodb+srv://root:root@cluster0.rdjo3.mongodb.net/myapp?retryWrites=true&w=majority', options).then(
+    () => { console.log('Database connected!') },
+    error => { console.log('*** Error to connect on database *** ' + error) }
+  )
+}
